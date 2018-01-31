@@ -1,0 +1,28 @@
+<div class="cat-menu">
+    <ul id="category">
+        <li class="cat-title" ui-sref-active="active">
+            <a href="#">Мій акаунт</a>
+        </li>
+        <li ui-sref-active="active" ng-show="isAdmin">
+            <a ui-sref="manage-categories">Управляти категоріями</a>
+        </li>
+        <li ui-sref-active="active" ng-show="isAdmin">
+            <a ui-sref="manage-products">Управляти товаром</a>
+        </li>
+        <li ui-sref-active="active" ng-show="isAdmin">
+            <a ui-sref="manage-requests">Запит</a>
+        </li>
+        <li ui-sref-active="active">
+            <a ui-sref="orders">Замовлення</a>
+        </li>
+        <li ui-sref-active="active" ng-hide="isAdmin">
+            <a ui-sref="orders">Надіслати запит</a>
+        </li>
+        <li ui-sref-active="active" ng-show="isAdmin">
+            <a ui-sref="admin">Користувачі </a>
+        </li>
+        <li ng-show="isLoggedIn" ui-sref-active="active">
+            <a ui-sref="settings">Змінити пароль</a>
+        </li>
+    </ul>
+</div>

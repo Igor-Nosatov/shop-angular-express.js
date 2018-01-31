@@ -1,0 +1,136 @@
+<navbar></navbar>
+<div class="breadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 col-md-offset-3">
+        <ul class="breadcrumb">
+          <li><a href="index.html"><i class="fa fa-home"></i>Головна</a></li>
+          <li class="active">Реєстрація</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" style="margin-bottom: 30px">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-md-offset-3">
+      <form class="form" name="form" ng-submit="vm.register(form)" novalidate>
+        <div class="form-fields">
+          <div class="form-group" ng-class="{ 'has-success': form.name.$valid && vm.submitted,
+                                            'has-error': form.name.$invalid && vm.submitted }">
+            <label>Ім'я</label>
+            <input type="text" name="name" class="form-control" ng-model="vm.user.name" required/>
+            <p class="help-block" ng-show="form.name.$error.required && vm.submitted">
+              Ім'я обов'язкове
+            </p>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group" ng-class="{ 'has-success': form.email.$valid && vm.submitted,
+                                            'has-error': form.email.$invalid && vm.submitted }">
+                <label>Емейл</label>
+                <input type="email" name="email" class="form-control" ng-model="vm.user.email" required mongoose-error/>
+                <p class="help-block" ng-show="form.email.$error.email && vm.submitted">
+
+                  Не виглядає як дійсний електронний лист.
+                </p>
+                <p class="help-block" ng-show="form.email.$error.required && vm.submitted">
+                  Яка у вас електронна адреса?
+                </p>
+                <p class="help-block" ng-show="form.email.$error.mongoose">
+                  {{ vm.errors.email }}
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group" ng-class="{ 'has-success': form.phone.$valid && vm.submitted,
+                                            'has-error': form.phone.$invalid && vm.submitted }">
+                <label>Телефон</label>
+                <input type="text" name="phone" class="form-control" ng-model="vm.user.phone" required/>
+                <p class="help-block" ng-show="form.phone.$error.required && vm.submitted">
+                  Необхідний номер телефону
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="form-group" ng-class="{ 'has-success': form.password.$valid && vm.submitted,
+                                            'has-error': form.password.$invalid && vm.submitted }">
+            <label>Пароль</label>
+            <input type="password" name="password" class="form-control" ng-model="vm.user.password" ng-minlength="3" required mongoose-error/>
+            <p class="help-block" ng-show="(form.password.$error.minlength || form.password.$error.required) && vm.submitted">
+
+              Пароль має містити принаймні 3 символи.
+            </p>
+            <p class="help-block" ng-show="form.password.$error.mongoose">
+              {{ vm.errors.password }}
+            </p>
+          </div>
+          <div class="form-group" ng-class="{ 'has-success': form.confirmPassword.$valid && vm.submitted,
+                                            'has-error': form.confirmPassword.$invalid && vm.submitted }">
+            <label>Підтвердити пароль</label>
+            <input type="password" name="confirmPassword" class="form-control" ng-model="vm.user.confirmPassword" match="vm.user.password" ng-minlength="3" required/>
+            <p class="help-block" ng-show="form.confirmPassword.$error.match && vm.submitted">
+              Паролі повинні збігатися.
+            </p>
+          </div>
+          <div class="form-group" ng-class="{ 'has-success': form.address.$valid && vm.submitted,
+                                            'has-error': form.address.$invalid && vm.submitted }">
+            <label>
+Адреса</label>
+            <input type="text" name="address" class="form-control" ng-model="vm.user.address" required/>
+            <p class="help-block" ng-show="form.address.$error.required && vm.submitted">
+              Потрібна адреса
+            </p>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group" ng-class="{ 'has-success': form.city.$valid && vm.submitted,
+                                            'has-error': form.city.$invalid && vm.submitted }">
+                <label>City</label>
+                <input type="text" name="city" class="form-control" ng-model="vm.user.city" required/>
+                <p class="help-block" ng-show="form.city.$error.required && vm.submitted">
+                  Місто обов'язкове
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group" ng-class="{ 'has-success': form.state.$valid && vm.submitted,
+                                            'has-error': form.state.$invalid && vm.submitted }">
+                <label>Область</label>
+                <input type="text" name="state" class="form-control" ng-model="vm.user.state" required/>
+                <p class="help-block" ng-show="form.state.$error.required && vm.submitted">
+
+                  Необхідна область
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group" ng-class="{ 'has-success': form.country.$valid && vm.submitted,
+                                            'has-error': form.country.$invalid && vm.submitted }">
+                <label>Держава</label>
+                <input type="text" name="country" class="form-control" ng-model="vm.user.country" required/>
+                <p class="help-block" ng-show="form.country.$error.required && vm.submitted">
+
+                  Необхідна країна
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="form-action account">
+            <input class="btn btn-inverse btn-lg btn-register" type="submit" id="submit" value="Signup">
+            <a class="btn btn-default  btn-login" ui-sref="login">Логін</a>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-md-offset-3">
+      <hr>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-md-offset-3">
+      <div class="form-fields" style="border-bottom: 1px solid;border-top: none;">
+        <oauth-buttons classes="btn-block"></oauth-buttons>
+      </div>
+    </div>
+  </div>
+</div>
+<footer></footer>

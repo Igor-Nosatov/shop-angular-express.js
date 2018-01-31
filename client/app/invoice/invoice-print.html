@@ -1,0 +1,137 @@
+<div id="invoice-table">
+    <div class="row">
+        <a class="btn btn-primary pull-right" print-page href="javascript:void(0)"><span class="glyphicon glyphicon-print"></span> &nbsp;Надрукувати зараз</a>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="invoice-title">
+                <h2>Інвойс</h2>
+                <h3 class="pull-right">Замовлення #{{invoice.orderNumber}}</h3>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-xs-6">
+                    <address>
+                        <strong>Виставлено на:</strong>
+                        <br> {{invoice.customerName}}
+                        <br> {{invoice.customerPhone}}
+                        <br> {{invoice.customerAddress}}
+                        <br> {{invoice.customerCity}}
+                        <br> {{invoice.customerState}}&nbsp;{{invoice.customerCountry}}
+                    </address>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <address>
+                        <strong>Надіслано:</strong>
+                        <br> {{invoice.customerName}}
+                        <br> {{invoice.customerPhone}}
+                        <br> {{invoice.customerAddress}}
+                        <br> {{invoice.customerCity}}
+                        <br> {{invoice.customerState}}&nbsp;{{invoice.customerCountry}}
+                    </address>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <address>
+                        <strong>Статус доставки:</strong>
+                        <br>
+                        <span ng-show="invoice.delivered">Доставлено</span>
+                        <span ng-hide="invoice.delivered">Очікує на розгляд</span>
+                        <br>
+                        <br>
+                    </address>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <address>
+                        <strong>Дата замовлення:
+</strong>
+                        <br> {{invoice.created | date}}
+                        <br>
+                        <br>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Підсумок Замовлення
+</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <td><strong>Товар</strong></td>
+                                    <td class="text-left"><strong>Ціна</strong></td>
+                                    <td class="text-center"><strong>Кількість</strong></td>
+                                    <td class="text-right"><strong>Всього</strong></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in invoice.items">
+                                    <td>{{item.name}}</td>
+                                    <td class="text-left">₴{{item.price | number:2}}</td>
+                                    <td class="text-center">{{item.quantity}}</td>
+                                    <td class="text-right">₴{{item.total | number:2}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="thick-line"></td>
+                                    <td class="thick-line"></td>
+                                    <td class="thick-line text-center"><strong>Всього</strong></td>
+                                    <td class="thick-line text-right">₴{{invoice.subTotal | number:2}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="no-line"></td>
+                                    <td class="no-line"></td>
+                                    <td class="no-line text-center"><strong>Податок</strong></td>
+                                    <td class="no-line text-right">₴{{invoice.tax | number:2}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="no-line"></td>
+                                    <td class="no-line"></td>
+                                    <td class="no-line text-center"><strong>Загальна сума</strong></td>
+                                    <td class="no-line text-right">₴{{invoice.totalCost | number:2}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+.invoice-title h2,
+.invoice-title h3 {
+    display: inline-block;
+}
+
+.table > tbody > tr > .no-line {
+    border-top: none;
+}
+
+.table > thead > tr > .no-line {
+    border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+    border-top: 2px solid;
+}
+
+#invoice-table {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.panel-heading {
+    padding-top: 10px !important;
+}
+</style>
