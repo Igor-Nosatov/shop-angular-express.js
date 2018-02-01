@@ -1,6 +1,6 @@
 # Summary
 
-eCommerce site built with the MEAN stack - https://bhcmart.herokuapp.com/
+eCommerce site built with the MEAN stack -
 
 ## Description
 
@@ -38,4 +38,5 @@ Running `npm test` will run the unit tests with karma.
 
 ## Production
 Running `grunt serve:dist` previews the application in production mode
+# shop-angular-express.js
 # shop-angular-express.js
